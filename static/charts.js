@@ -94,3 +94,12 @@ function renderChart(chartType, columns) {
     charts.push(chart);
     
 }
+function filterCharts(index) {
+    charts.forEach(chart => {
+        chart.data.labels = [chart.data.labels[index]];
+        chart.data.datasets.forEach(dataset => {
+            dataset.data = [dataset.data[index]];
+        });
+        chart.update();
+    });
+}

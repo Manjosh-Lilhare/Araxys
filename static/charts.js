@@ -1,4 +1,5 @@
 let uploadedColumns = [];
+let charts = []; // Store all chart instances globally
 
 function uploadFile() {
     let fileInput = document.getElementById("fileInput");
@@ -68,7 +69,7 @@ function renderChart(chartType, columns) {
     
     chartContainer.appendChild(canvas);
 
-    new Chart(canvas, {
+    let chart = new Chart(canvas, {
         type: chartType,
         data: {
             labels: columns,
@@ -78,8 +79,18 @@ function renderChart(chartType, columns) {
             }]
         },
         options: {
-            responsive: false, // Prevent automatic resizing
-            maintainAspectRatio: false
+            responsive: false,
+            maintainAspectRatio: false,
+            onClick: function(event, elements) {
+                if (elements.length > 0) {
+                    let index = elements[0].index;
+                    filterCharts(index);
+                }
+            }
         }
     });
+    
+    // Store the chart instance in the global array
+    charts.push(chart);
+    
 }

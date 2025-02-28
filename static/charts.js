@@ -32,7 +32,8 @@ function updateColumnDropdown(columns) {
 
 function addChart() {
     let chartType = document.getElementById("chartType").value;
-    let selectedColumns = Array.from(document.getElementById("columnSelect").selectedOptions).map(opt => opt.value);
+    let selectedColumns = Array.from(document.getElementById("columnSelect").selectedOptions)
+                               .map(opt => opt.value);
 
     if (selectedColumns.length === 0) {
         alert("Please select at least one column.");
@@ -55,15 +56,16 @@ function addChart() {
     .catch(error => console.error("Error:", error));
 }
 
+
 function renderChart(chartType, columns) {
     let chartContainer = document.getElementById("chartsContainer");
     
     // Create a new canvas element
     let canvas = document.createElement("canvas");
     canvas.width = 250;  // Set width
-    canvas.height = 8250; // Set height
-    canvas.style.width = "250px";
-    canvas.style.height = "auto";
+    canvas.height = 250; // Set height
+    canvas.style.width = "500px";
+    canvas.style.height = "500px";
     
     chartContainer.appendChild(canvas);
 

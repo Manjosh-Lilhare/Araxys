@@ -22,10 +22,9 @@
         <button type="submit">Upload</button>
     </form>
 
-    <!-- Ensure button exists but is hidden initially -->
-    <button id="visualize-btn" style="display: none; margin-top: 10px;">Visualize</button>
+    <button id="visualize-btn" disabled>Visualize</button>
 
-    <canvas id="myChart" style="width: 100%; max-width: 600px; height: 400px;"></canvas>
+    <canvas id="myChart" width="600" height="400"></canvas>
 
     <script src="{{ url_for('static', filename='charts.js') }}"></script>
 </body>

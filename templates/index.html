@@ -6,6 +6,7 @@
     <title>CSV Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='charts.js') }}" defer></script>
+    <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
 
@@ -13,12 +14,18 @@
     <input type="file" id="fileInput">
     <button onclick="uploadFile()">Upload</button>
 
-    <h2>Select Chart Type</h2>
-    <select id="chartType">
-        <option value="bar">Bar Chart</option>
-        <option value="line">Line Chart</option>
-        <option value="pie">Pie Chart</option>
-    </select>
+    <label for="chartType">Select Chart Type:</label>
+<select id="chartType">
+    <option value="bar">Bar</option>
+    <option value="line">Line</option>
+    <option value="pie">Pie</option>
+    <option value="doughnut">Doughnut</option>
+    <option value="radar">Radar</option>
+    <option value="polarArea">Polar Area</option>
+    <option value="bubble">Bubble</option>
+    <option value="scatter">Scatter</option>
+</select>
+
 
     <h2>Select Columns</h2>
     <select id="columnSelect" multiple></select>

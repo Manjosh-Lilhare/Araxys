@@ -57,14 +57,29 @@ function addChart() {
 
 function renderChart(chartType, columns) {
     let chartContainer = document.getElementById("chartsContainer");
+    
+    // Create a new canvas element
     let canvas = document.createElement("canvas");
+    chartContainer.style.display = "flex";          //ek ke baju ek ni aara
+    canvas.width = 500;  // Set width
+    canvas.height = 500; // Set height
+    canvas.style.width = "500px";
+    canvas.style.height = "500px";
+    
     chartContainer.appendChild(canvas);
 
     new Chart(canvas, {
         type: chartType,
         data: {
             labels: columns,
-            datasets: [{ label: "Dataset", data: columns.map(() => Math.random() * 100) }]
+            datasets: [{ 
+                label: "Dataset", 
+                data: columns.map(() => Math.random() * 100) 
+            }]
+        },
+        options: {
+            responsive: false, // Prevent automatic resizing
+            maintainAspectRatio: false
         }
     });
 }

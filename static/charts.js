@@ -20,16 +20,49 @@ function uploadFile() {
 }
 
 function updateColumnDropdown(columns) {
-  let columnSelect = document.getElementById("columnSelect");
-  columnSelect.innerHTML = "";
-  columns.forEach((col) => {
-    let option = document.createElement("option");
-    option.type = "checkbox";
-    option.value = col;
-    option.textContent = col;
-    columnSelect.appendChild(option);
-  });
+    let columnSelect = document.getElementById("columnSelect");
+    columnSelect.innerHTML = ""; // Clear previous options
+
+    // Create a dropdown container
+    let dropdown = document.createElement("div");
+    dropdown.classList.add("dropdown");
+
+    // Create a button to show options
+    let dropdownButton = document.createElement("button");
+    dropdownButton.textContent = "Select Columns ▼";
+    dropdownButton.classList.add("dropdown-btn");
+
+    // Create a container for checkboxes
+    let dropdownContent = document.createElement("div");
+    dropdownContent.classList.add("dropdown-content");
+    dropdownContent.style.display = "none"; // Hidden initially
+
+    columns.forEach((col) => {
+        let label = document.createElement("label");
+        label.style.display = "block";
+        label.style.cursor = "pointer";
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = col;
+        checkbox.name = "columns";
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(" " + col));
+        dropdownContent.appendChild(label);
+    });
+
+    // Toggle dropdown visibility on button click
+    dropdownButton.addEventListener("click", function () {
+        dropdownContent.style.display = dropdownContent.style.display === "none" ? "block" : "none";
+    });
+
+    // Append elements
+    dropdown.appendChild(dropdownButton);
+    dropdown.appendChild(dropdownContent);
+    columnSelect.appendChild(dropdown);
 }
+
 
 function addChart() {
   let chartType = document.getElementById("chartType").value;
@@ -77,7 +110,7 @@ function renderChart(chartType, columns) {
           y: Math.random() * 100,
           r: Math.random() * 20 + 5, // Bubble size (radius)
         })),
-        backgroundColor: "rgba(54, 162, 235, 0.5)",
+        backgroundColor: columns.map(() => getRandomColor()),
       },
     ];
   } else if (chartType === "scatter") {
@@ -88,16 +121,18 @@ function renderChart(chartType, columns) {
           x: Math.random() * 100,
           y: Math.random() * 100,
         })),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: columns.map(() => getRandomColor()),
       },
     ];
   } else {
     dataset = [
-      {
-        label: "Dataset",
-        data: columns.map(() => Math.random() * 100),
-        backgroundColor: "rgba(13, 215, 215, 0.5)",
-      },
+        {
+            label: "Dataset",
+            data: columns.map(() => Math.random() * 100),
+            backgroundColor: columns.map(() => getRandomColor()), // Generate a unique color for each column
+            // borderColor: columns.map(() => getRandomColor(true)), // Darker border color
+            borderWidth: 2
+        }
     ];
   }
 
@@ -120,16 +155,20 @@ function renderChart(chartType, columns) {
     },
   });
 }
-function generateColors(count, border = false) {
-    const colors = [
-        "#FF5733", "#33FF57", "#5733FF", "#FFD700", "#FF33A8", "#33D4FF",
-        "#D433FF", "#33FFA8", "#A833FF", "#FF8C33", "#33FF8C", "#8C33FF"
+function getRandomColor(border = false) {
+    let colors = [
+        "rgba(255, 99, 132, 0.8)",  // Bright Red
+        "rgba(54, 162, 235, 0.8)",  // Vivid Blue
+        "rgba(255, 206, 86, 0.8)",  // Bright Yellow
+        "rgba(75, 192, 192, 0.8)",  // Cyan Green
+        "rgba(153, 102, 255, 0.8)", // Vibrant Purple
+        "rgba(255, 159, 64, 0.8)",  // Strong Orange
+        "rgba(0, 255, 127, 0.8)",   // Neon Green
+        "rgba(220, 20, 60, 0.8)",   // Crimson
+        "rgba(0, 191, 255, 0.8)",   // Deep Sky Blue
+        "rgba(255, 140, 0, 0.8)"    // Dark Orange
     ];
-    let generatedColors = [];
-    
-    for (let i = 0; i < count; i++) {
-        let color = colors[i % colors.length]; // Cycle through colors
-        generatedColors.push(border ? color.replace(")", ", 1)").replace("rgb", "rgba") : color);
-    }
-    return generatedColors;
+    let color = colors[Math.floor(Math.random() * colors.length)];
+    return border ? color.replace("0.8", "1") : color;
 }
+

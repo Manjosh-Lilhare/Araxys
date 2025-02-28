@@ -43,6 +43,8 @@ button:hover {
     background: #0056b3;
 }
 
+
+
 #chartsContainer {
     display: flex;
     flex-wrap: wrap; /* Ensures charts wrap when screen fills */
@@ -56,3 +58,10 @@ canvas {
     height: auto;
     flex: 1 1 250px; /* Allows charts to resize but maintain a minimum of 250px */
 }
+#columnSelect{
+    width: 100px;
+    height: 60px;
+    bottom: 0px;
+}
+
+    

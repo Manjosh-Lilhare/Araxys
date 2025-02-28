@@ -1,36 +1,85 @@
-document.getElementById("upload-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent page reload
+let uploadedColumns = [];
 
-    console.log("Upload form submitted! ✅");  // 🔴 Check if this logs
+function uploadFile() {
+    let fileInput = document.getElementById("fileInput");
+    let formData = new FormData();
+    formData.append("file", fileInput.files[0]);
 
-    const fileInput = document.getElementById("csvFile");
-    if (fileInput.files.length === 0) {
-        console.error("No file selected! ❌");
-        alert("Please select a CSV file before uploading.");
+    fetch("/upload", { method: "POST", body: formData })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert("Error: " + data.error);
+            } else {
+                alert(data.message);
+                uploadedColumns = data.numeric_columns.concat(data.categorical_columns);
+                updateColumnDropdown(uploadedColumns);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}
+
+function updateColumnDropdown(columns) {
+    let columnSelect = document.getElementById("columnSelect");
+    columnSelect.innerHTML = "";
+    columns.forEach(col => {
+        let option = document.createElement("option");
+        option.value = col;
+        option.textContent = col;
+        columnSelect.appendChild(option);
+    });
+}
+
+function addChart() {
+    let chartType = document.getElementById("chartType").value;
+    let selectedColumns = Array.from(document.getElementById("columnSelect").selectedOptions).map(opt => opt.value);
+
+    if (selectedColumns.length === 0) {
+        alert("Please select at least one column.");
         return;
     }
 
-    const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
-
-    console.log("Uploading file:", fileInput.files[0].name);  // 🔴 Check if file is detected
-
-    fetch("/upload", {
+    fetch("/add_chart", {
         method: "POST",
-        body: formData
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chartType, columns: selectedColumns })
     })
     .then(response => response.json())
     .then(data => {
         if (data.error) {
-            console.error("Upload Error:", data.error);
             alert("Error: " + data.error);
-            return;
+        } else {
+            renderChart(data.chartType, data.columns);
         }
-
-        console.log("File uploaded successfully:", data);  // 🔴 Verify this appears in Console
-        window.chartData = data;
-        document.getElementById("visualize-btn").disabled = false;
-        console.log("Visualize button enabled. ✅");
     })
-    .catch(error => console.error("Upload Failed:", error));
-});
+    .catch(error => console.error("Error:", error));
+}
+
+function renderChart(chartType, columns) {
+    let chartContainer = document.getElementById("chartsContainer");
+    
+    // Create a new canvas element
+    let canvas = document.createElement("canvas");
+    canvas.width = 250;  // Set width
+    canvas.height = 8250; // Set height
+    canvas.style.width = "250px";
+    canvas.style.height = "auto";
+    
+    chartContainer.appendChild(canvas);
+
+    new Chart(canvas, {
+        type: chartType,
+        data: {
+            labels: columns,
+            datasets: [{ 
+                label: "Dataset", 
+                data: columns.map(() => Math.random() * 100) 
+            }]
+        },
+        options: {
+            responsive: false, // Prevent automatic resizing
+            maintainAspectRatio: false
+        }
+    });
+}
+

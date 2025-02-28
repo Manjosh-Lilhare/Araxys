@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='charts.js') }}" defer></script>
 </head>
 <body>
-    <h1>Upload a CSV File</h1>
-    
-    <form id="upload-form" enctype="multipart/form-data">
-        <input type="file" id="csvFile" accept=".csv">
-        
-        <label for="chartType">Select Chart Type:</label>
-        <select id="chartType">
-            <option value="line">Line Chart</option>
-            <option value="bar">Bar Chart</option>
-            <option value="pie">Pie Chart</option>
-        </select>
 
-        <button type="submit" id="upload-btn">Upload</button>
-    </form>
+    <h2>Upload CSV File</h2>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
 
-    <button id="visualize-btn" disabled>Visualize</button>
+    <h2>Select Chart Type</h2>
+    <select id="chartType">
+        <option value="bar">Bar Chart</option>
+        <option value="line">Line Chart</option>
+        <option value="pie">Pie Chart</option>
+    </select>
 
-    <canvas id="myChart" width="600" height="400"></canvas>
+    <h2>Select Columns</h2>
+    <select id="columnSelect" multiple></select>
 
-    <script src="{{ url_for('static', filename='charts.js') }}"></script>
+    <button onclick="addChart()">Add Chart</button>
+
+    <div id="chartsContainer"></div>
+
 </body>
 </html>

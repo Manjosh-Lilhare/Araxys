@@ -1,0 +1,21 @@
+l,Customer_ID,Customer_Name,Age,Gender,Region,Product_Category,Product_ID,Product_Name,Quantity,Unit_Price,Total_Amount,Purchase_Date
+1001,C101,John Doe,28,Male,North,Electronics,P001,Smartphone,1,500,500,05-01-2024
+1002,C102,Jane Smith,34,Female,South,Fashion,P002,Sneakers,2,75,150,05-01-2024
+1003,C101,Jonh Doe,28,Male,North,Electronics,P001,Smartphone,1,500,500,05-01-2024
+1004,C103,Alex Brown,,Male,West,Home Appliances,P003,Vacuum Cleaner,1,200,200,10-02-2024
+1005,C104,Chris Wong,45,Male,East,Electronics,P004,Laptop,1,1000,1000,10-02-2024
+1006,C105,Lisa Green,29,female,South,Fashion,P002,Sneakers,1,75,,15-03-2024
+1007,C106,Mark Taylor,38,Male,North,Electronics,P005,Tablet,2,300,600,01-04-2024
+1008,C107,Emily Davis,27,Female,West,Fashion,P006,Handbag,1,250,250,01-04-2024
+1009,C108,Michael Scott,42,Male,East,Office Supplies,P007,Printer,1,150,150,15-04-2024
+1010,C109,Pam Beesly,31,Female,South,Office Supplies,P008,Desk Chair,1,85,85,15-04-2024
+1011,C110,Dwight Schrute,39,Male,North,Office Supplies,P007,Printer,1,150,150,20-04-2024
+1012,C101,John Doe,28,Male,North,Electronics,P001,Smartphone,1,500,500,01-05-2024
+1013,C111,Sarah Connor,35,Female,West,Home Appliances,P009,Air Conditioner,1,400,400,05-05-2024
+1014,C112,Kyle Reese,33,Male,South,Home Appliances,P009,Air Conditioner,1,400,400,07-05-2024
+1015,C113,Ellen Ripley,40,Female,East,Electronics,P010,Smartwatch,2,200,400,01-06-2024
+1016,C114,Peter Parker,22,Male,North,Fashion,P011,T-Shirt,3,20,60,05-06-2024
+1017,C115,Bruce Wayne,45,Male,West,Fashion,P012,Suit,1,500,500,10-06-2024
+1018,C116,Clark Kent,37,Male,East,Electronics,P004,Laptop,1,1000,1000,15-06-2024
+1019,C117,Diana Prince,30,Female,South,Fashion,P006,Handbag,1,250,250,20-06-2024
+1020,C105,Lisa Green,29,female,South,Fashion,P002,Sneakers,2,75,150,01-07-2024

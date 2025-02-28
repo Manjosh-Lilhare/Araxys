@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSV Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='charts.js') }}" defer></script>
-    <link rel="stylesheet" href="/static/index.css">
-</head>
-<body>
-    <div>   
-         <h2>Upload CSV File</h2>
-    <input type="file" id="fileInput">
-    <button onclick="uploadFile()">Upload</button>
+    <link rel="stylesheet" href="/static/index.css" />
+  </head>
+  <body>
+    <div>
+      <h2>Upload CSV File</h2>
+      <input type="file" id="fileInput" />
+      <button onclick="uploadFile()">Upload</button>
     </div>
-    <label for="chartType">Select Chart Type:</label>
-<select id="chartType">
-    <option value="bar">Bar</option>
-    <option value="line">Line</option>
-    <option value="pie">Pie</option>
-    <option value="doughnut">Doughnut</option>
-    <option value="radar">Radar</option>
-    <option value="polarArea">Polar Area</option>
-    <option value="bubble">Bubble</option>
-    <option value="scatter">Scatter</option>
-</select>
+    <div class="sel">
+      <label for="chartType">Select Chart Type:</label>
+      <select id="chartType">
+        <option value="bar">Bar</option>
+        <option value="line">Line</option>
+        <option value="pie">Pie</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="radar">Radar</option>
+        <option value="polarArea">Polar Area</option>
+        <option value="bubble">Bubble</option>
+        <option value="scatter">Scatter</option>
+      </select>
+    </div>
 
-<div>
     <h2>Select Columns</h2>
     <select id="columnSelect" multiple></select>
-</div>
-  <div>
-    <button  class="add_cart" onclick="addChart()">Add Chart</button>
-<div id="chartSelectionSection">
-</div>
-    <h3>Generated Charts</h3>
-    <div id="chartsContainer"></div>
-
-    
-    
-</div>
-
-</body>
+    <div>
+      <button class="add_cart" onclick="addChart()">Add Chart</button>
+      <div id="chartSelectionSection"></div>
+      <h3>Generated Charts</h3>
+      <div id="chartsContainer"></div>
+    </div>
+  </body>
 </html>

@@ -47,16 +47,16 @@ button:hover {
 
 #chartsContainer {
     display: flex;
-    flex-wrap: wrap; /* Ensures charts wrap when screen fills */
-    justify-content: left; /* Centers charts in the container */
-    gap: 15px; /* Adds spacing between charts */
+    flex-wrap: wrap; 
+    justify-content: left; 
+    gap: 15px; 
     padding: 10px;
 }
 
 canvas {
-    max-width: 33.33%; /* Ensures responsiveness */
+    max-width: 33.33%; 
     height: auto;
-    flex: 1 1 250px; /* Allows charts to resize but maintain a minimum of 250px */
+    flex: 1 1 250px; 
 }
 #columnSelect{
     width: 350px;

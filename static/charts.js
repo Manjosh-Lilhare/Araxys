@@ -103,7 +103,8 @@ function filterCharts(index) {
         chart.update();
     });
 }
-function showDashboard() {
-    document.getElementById("dashboardSection").style.display = "block";
+function showChartSelection() {
+    document.getElementById("chartSelectionSection").style.display = "block";
     document.getElementById("chartsContainer").style.display = "none";
 }
+

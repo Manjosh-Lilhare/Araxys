@@ -9,36 +9,36 @@
     <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
-    <div id="dashboardSection">
-        <!-- Main dashboard content goes here -->
-        
-        <h2>Upload CSV File</h2>
-        <input type="file" id="fileInput">
-        <button onclick="uploadFile()">Upload</button>
-        
-        <label for="chartType">Select Chart Type:</label>
-        <select id="chartType">
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
-            <option value="pie">Pie</option>
-            <option value="doughnut">Doughnut</option>
-            <option value="radar">Radar</option>
-            <option value="polarArea">Polar Area</option>
-            <option value="bubble">Bubble</option>
-            <option value="scatter">Scatter</option>
-        </select>
-        
-        
-        <h2>Select Columns</h2>
-        <select id="columnSelect" multiple></select>
-        
-        <button onclick="addChart()">Add Chart</button>
-        
-        <div id="chartsContainer"></div>
-        <button id="backToDashboard" onclick="showDashboard()">Back to Dashboard</button>
-        
-        
-    </div>
+    
+    <h2>Upload CSV File</h2>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
+
+    <label for="chartType">Select Chart Type:</label>
+<select id="chartType">
+    <option value="bar">Bar</option>
+    <option value="line">Line</option>
+    <option value="pie">Pie</option>
+    <option value="doughnut">Doughnut</option>
+    <option value="radar">Radar</option>
+    <option value="polarArea">Polar Area</option>
+    <option value="bubble">Bubble</option>
+    <option value="scatter">Scatter</option>
+</select>
+
+
+    <h2>Select Columns</h2>
+    <select id="columnSelect" multiple></select>
+
+    <button onclick="addChart()">Add Chart</button>
+<div id="chartSelectionSection">
+
+    <div id="chartsContainer"></div>
+    <button id="backToSelection" onclick="showChartSelection()">Back to Chart Selection</button>
+
+    
+    
+</div>
 
 </body>
 </html>

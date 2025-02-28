@@ -1,3 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/abstract-textured-backgound.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+h2 {
+    color: #333;
+}
+
+.container {
+    max-width:1300px;
+    margin: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section, .controls {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 8px;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
 #chartsContainer {
     display: flex;
     flex-wrap: wrap; /* Ensures charts wrap when screen fills */

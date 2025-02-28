@@ -1,31 +1,36 @@
-document.getElementById("visualize-btn").addEventListener("click", function() {
-    if (!window.chartData) {
-        alert("Please upload a CSV file first.");
+document.getElementById("upload-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent page reload
+
+    console.log("Upload form submitted! ✅");  // 🔴 Check if this logs
+
+    const fileInput = document.getElementById("csvFile");
+    if (fileInput.files.length === 0) {
+        console.error("No file selected! ❌");
+        alert("Please select a CSV file before uploading.");
         return;
     }
 
-    const chartType = document.getElementById("chartType").value;
-    const ctx = document.getElementById("myChart").getContext("2d");
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
 
-    console.log("Creating chart with data:", window.chartData);
+    console.log("Uploading file:", fileInput.files[0].name);  // 🔴 Check if file is detected
 
-    // 🔴 FIX: Check if a chart instance exists before destroying it
-    if (window.myChart instanceof Chart) {
-        window.myChart.destroy();
-    }
-
-    // Create new chart
-    window.myChart = new Chart(ctx, {
-        type: chartType,  // Use the selected chart type
-        data: {
-            labels: window.chartData.labels,
-            datasets: window.chartData.datasets
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
+    fetch("/upload", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error("Upload Error:", data.error);
+            alert("Error: " + data.error);
+            return;
         }
-    });
 
-    console.log("Chart displayed successfully.");
+        console.log("File uploaded successfully:", data);  // 🔴 Verify this appears in Console
+        window.chartData = data;
+        document.getElementById("visualize-btn").disabled = false;
+        console.log("Visualize button enabled. ✅");
+    })
+    .catch(error => console.error("Upload Failed:", error));
 });

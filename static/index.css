@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: url('/abstract-textured-backgound.jpg') no-repeat center center fixed;
+    background: url('') no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
@@ -59,8 +59,8 @@ canvas {
     flex: 1 1 250px; /* Allows charts to resize but maintain a minimum of 250px */
 }
 #columnSelect{
-    width: 100px;
-    height: 60px;
+    width: 350px;
+    height: 100px;
     bottom: 0px;
 }
 

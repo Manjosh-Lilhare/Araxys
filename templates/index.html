@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
-    
-    <h2>Upload CSV File</h2>
+    <div>   
+         <h2>Upload CSV File</h2>
     <input type="file" id="fileInput">
     <button onclick="uploadFile()">Upload</button>
-
+    </div>
     <label for="chartType">Select Chart Type:</label>
 <select id="chartType">
     <option value="bar">Bar</option>
@@ -26,15 +26,16 @@
     <option value="scatter">Scatter</option>
 </select>
 
-
+<div>
     <h2>Select Columns</h2>
     <select id="columnSelect" multiple></select>
-
+</div>
+  <div>
     <button  class="add_cart" onclick="addChart()">Add Chart</button>
 <div id="chartSelectionSection">
-
+</div>
+    <h3>Generated Charts</h3>
     <div id="chartsContainer"></div>
-    <button id="backToSelection" onclick="showChartSelection()">Back to Chart Selection</button>
 
     
     

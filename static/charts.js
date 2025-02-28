@@ -20,49 +20,16 @@ function uploadFile() {
 }
 
 function updateColumnDropdown(columns) {
-    let columnSelect = document.getElementById("columnSelect");
-    columnSelect.innerHTML = ""; // Clear previous options
-
-    // Create a dropdown container
-    let dropdown = document.createElement("div");
-    dropdown.classList.add("dropdown");
-
-    // Create a button to show options
-    let dropdownButton = document.createElement("button");
-    dropdownButton.textContent = "Select Columns ▼";
-    dropdownButton.classList.add("dropdown-btn");
-
-    // Create a container for checkboxes
-    let dropdownContent = document.createElement("div");
-    dropdownContent.classList.add("dropdown-content");
-    dropdownContent.style.display = "none"; // Hidden initially
-
-    columns.forEach((col) => {
-        let label = document.createElement("label");
-        label.style.display = "block";
-        label.style.cursor = "pointer";
-
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.value = col;
-        checkbox.name = "columns";
-
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(" " + col));
-        dropdownContent.appendChild(label);
-    });
-
-    // Toggle dropdown visibility on button click
-    dropdownButton.addEventListener("click", function () {
-        dropdownContent.style.display = dropdownContent.style.display === "none" ? "block" : "none";
-    });
-
-    // Append elements
-    dropdown.appendChild(dropdownButton);
-    dropdown.appendChild(dropdownContent);
-    columnSelect.appendChild(dropdown);
+  let columnSelect = document.getElementById("columnSelect");
+  columnSelect.innerHTML = "";
+  columns.forEach((col) => {
+    let option = document.createElement("option");
+    option.type = "checkbox";
+    option.value = col;
+    option.textContent = col;
+    columnSelect.appendChild(option);
+  });
 }
-
 
 function addChart() {
   let chartType = document.getElementById("chartType").value;

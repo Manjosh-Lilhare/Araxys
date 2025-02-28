@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Upload a CSV File</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="csvFile" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+    <canvas id="myChart"></canvas>
+
+    <script src="{{ url_for('static', filename='charts.js') }}"></script>
+</body>
+</html>
